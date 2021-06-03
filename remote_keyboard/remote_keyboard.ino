@@ -1,50 +1,49 @@
-#include <SoftwareSerial.h> 
-#define BT_RXD 3
-#define BT_TXD 2
-SoftwareSerial bluetooth(BT_RXD, BT_TXD);
+#include <Keyboard.h>
 String command;
-char* str;
-String* macro_command;
+char *str;
+char **macro_command;
+int x, y, row, col;
 
 void macro();
 void presskey();
 
 void setup(){
-  Serial.begin(9600);
-  bluetooth.begin(9600);
+  Serial1.begin(9600);
+  Keyboard.begin();
 }
 void loop(){
-  if (bluetooth.available()){
-    command=bluetooth.readString();//블루투스로 부터 시리얼 받기
+  if (Serial1.available()){
+    command=Serial1.readString();//블루투스로 부터 시리얼 받기
     str = (char*) malloc(sizeof(char)*command.length()+1);//동적 변수
     command.toCharArray(str, command.length()+1);//String에서 char로 변환
-    Serial.write(str);
     if(command=="<macro>"){//매크로 입력
+      row=0;
       while(1){
-        if(bluetooth.available()){
-          command=bluetooth.readString();
+        if(Serial1.available()){
+          command=Serial1.readString();
           if(command=="</macro>"){//매크로 입력 끝
             break;
           }
+          macro_command = (char**) malloc(sizeof(char*)*row);
+          macro_command[row] = (char*) malloc(sizeof(char)*command.length()*row+1);//동적 2차원배열
+          command.toCharArray(macro_command[row], command.length()+1);//String에서 char로 변환
+          row++;
         }
       }
     }else{
-      presskey(command);
+      presskey(str);
     }
-    free(str);//메모리 해제
-  }
-  if (Serial.available()){
-    command=Serial.readString();
-    str = (char*) malloc(sizeof(char)*command.length()+1);
-    command.toCharArray(str, command.length()+1);
-    bluetooth.write(str);
     free(str);
+    for (int i=0;i<row;i++){//메모리 해제
+      free(macro_command[i]);
+    }
+    free(macro_command);
   }
 }
 
 void macro(){
   
 }
-void presskey(String key){
-  
+void presskey(char key){
+  Keyboard.write(key);
 }
