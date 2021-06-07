@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/text_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="status"
+        android:textSize="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_paired"
+        android:text="기기 목록 불러오기"
+        android:onClick="onClickButtonPaired"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_status"/>
+
+    <Button
+        android:id="@+id/btn_search"
+        android:text="블루투스 기기 검색"
+        android:onClick="onClickButtonSearch"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_paired"/>
+
+    <EditText
+        android:id="@+id/input_command"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="명령어 입력"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_search"/>
+
+    <Button
+        android:id="@+id/btn_command_send"
+        android:text="명령어 전송"
+        android:onClick="onClickButtonSendCommand"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_command"/>
+
+    <EditText
+        android:id="@+id/input_text"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="텍스트"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_command_send"/>
+    <Button
+        android:id="@+id/btn_text_send"
+        android:text="텍스트 전송"
+        android:onClick="onClickButtonSendText"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_text"/>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_text"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
