@@ -30,11 +30,14 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static Context context_main; // context 변수 선언
+    public int var; // 다른 Activity에서 접근할 변수
+
     String TAG = "MainActivity";
     UUID BT_MODULE_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifier
 
     TextView textStatus;
-    Button btnParied, btnSearch, btnCommand_Send, btnText_Send;
+    Button btnParied, btnSearch;
     TextView input_command, input_text;
     ListView listView;
 
@@ -70,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
         textStatus = (TextView) findViewById(R.id.text_status);
         btnParied = (Button) findViewById(R.id.btn_paired);
         btnSearch = (Button) findViewById(R.id.btn_search);
-        btnCommand_Send = (Button) findViewById(R.id.btn_command_send);
-        btnText_Send = (Button) findViewById(R.id.btn_text_send);
         input_command = (EditText) findViewById(R.id.input_command);
         input_text = (EditText) findViewById(R.id.input_text);
         listView = (ListView) findViewById(R.id.listview);
@@ -116,14 +117,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "bluetooth not on", Toast.LENGTH_SHORT).show();
             }
         }
-    }
-
-    // Send string
-    public void onClickButtonSendCommand(View view){
-        if(connectedThread!=null){connectedThread.write(input_command.getText().toString());}
-    }
-    public void onClickButtonSendText(View view){
-        if(connectedThread!=null){connectedThread.write("/txt/"+input_text.getText().toString()+"|");}
     }
 
     // Create a BroadcastReceiver for ACTION_FOUND.
