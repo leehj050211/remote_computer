@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textStatus;
     Button btnParied, btnSearch;
-    TextView input_command, input_text;
     ListView listView;
 
     BluetoothAdapter btAdapter;
@@ -73,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
         textStatus = (TextView) findViewById(R.id.text_status);
         btnParied = (Button) findViewById(R.id.btn_paired);
         btnSearch = (Button) findViewById(R.id.btn_search);
-        input_command = (EditText) findViewById(R.id.input_command);
-        input_text = (EditText) findViewById(R.id.input_text);
         listView = (ListView) findViewById(R.id.listview);
 
         // Show paired devices
