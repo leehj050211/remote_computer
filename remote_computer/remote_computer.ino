@@ -1,7 +1,6 @@
 #include <Keyboard.h>
 #include <Mouse.h>
-String code, macro_code, str;
-char str1;
+String code, macro_code;
 int macro_status=0, macro_reload=1;
 
 void macro();
@@ -41,21 +40,22 @@ void macro(){
     max_macro++;
   }
   for(int j=macro_reload;j!=0;j--){
+    if(macro_status!=1){
+          break;
+    }
     for(int i=0;i<max_macro;i++){
       if(Serial1.available()){
         code=Serial1.readStringUntil('|');// |까지의 시리얼 값을 받음
         code.trim();// 앞뒤 공백제거
         command(code);// 명령 실행
-        if(macro_status!=1){
+      }
+      if(macro_status!=1){
           break;
-        }
       }
       if(i==0){
         command(macro_code.substring(0, macro_index[i]));
-        Serial.println(macro_code.substring(0, macro_index[i]));
       }else{
         command(macro_code.substring(macro_index[i-1]+1, macro_index[i]));
-        Serial.println(macro_code.substring(macro_index[i-1]+1, macro_index[i]));
       }
     }
   }
@@ -87,7 +87,8 @@ void command(String command){
     }else if(command.substring(1, 4).equals("pre")){// 키 누르기
       int slash_index = command.indexOf('/', 1);// / 위치
       int comma_index = command.indexOf(',', slash_index + 1);// 콤마 위치
-      str = command.substring(comma_index + 1);
+      char str1;
+      String str = command.substring(comma_index + 1);
       str.toCharArray(str1, str.length()+1);
       switch(command.substring(slash_index + 1, comma_index).toInt()){
         case 0:
@@ -154,6 +155,8 @@ void command(String command){
       delay(command.substring(slash_index + 1).toInt());
     }else if(command.substring(1, 6).equals("start")){// 매크로 실행
       macro();
+    }else if(command.substring(1, 2).equals("s")){
+      macro_status=1;
     }else if(command.substring(1, 5).equals("stop")){// 매크로 실행
       macro_status=0;
     }else if(command.substring(1, 5).equals("edit")){// 매크로 입력

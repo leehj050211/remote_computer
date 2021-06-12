@@ -1,6 +1,7 @@
 package com.zzz2757.remote_computer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -11,7 +12,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,15 +34,13 @@ import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Context context_main; // context 변수 선언
-    public int var; // 다른 Activity에서 접근할 변수
-
     String TAG = "MainActivity";
     UUID BT_MODULE_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifier
 
-    TextView textStatus;
-    Button btnParied, btnSearch;
+    TextView textStatus, input_command, input_text;
+    Button btnParied, btnSearch, btnCommand_Send, btnText_Send;
     ListView listView;
+    ConstraintLayout connect, control;
 
     BluetoothAdapter btAdapter;
     Set<BluetoothDevice> pairedDevices;
@@ -48,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_ENABLE_BT = 1;
     BluetoothSocket btSocket = null;
     ConnectedThread connectedThread;
+
+    boolean mode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +77,14 @@ public class MainActivity extends AppCompatActivity {
         btnParied = (Button) findViewById(R.id.btn_paired);
         btnSearch = (Button) findViewById(R.id.btn_search);
         listView = (ListView) findViewById(R.id.listview);
+        btnCommand_Send = (Button) findViewById(R.id.btn_command_send);
+        btnText_Send = (Button) findViewById(R.id.btn_text_send);
+        input_command = (EditText) findViewById(R.id.input_command);
+        input_text = (EditText) findViewById(R.id.input_text);
+        connect = (ConstraintLayout) findViewById(R.id.connect);
+        connect.setVisibility(View.VISIBLE);
+        control = (ConstraintLayout) findViewById(R.id.control);
+        control.setVisibility(View.INVISIBLE);
 
         // Show paired devices
         btArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
@@ -80,6 +92,21 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(btArrayAdapter);
 
         listView.setOnItemClickListener(new myOnItemClickListener());
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Toast.makeText(this, "세로모드", Toast.LENGTH_SHORT).show();
+        }
+
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "가로모드", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 
     public void onClickButtonPaired(View view){
@@ -141,6 +168,25 @@ public class MainActivity extends AppCompatActivity {
         unregisterReceiver(receiver);
     }
 
+    public void onClickButtonToggleMode(View view){
+        if (mode){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // 세로회전
+            mode = false;
+        }else{
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // 가로회전
+            mode = true;
+
+        }
+    }
+    // Send string
+    public void onClickButtonSendCommand(View view){
+        if(connectedThread!=null){connectedThread.write(input_command.getText().toString());}
+    }
+    public void onClickButtonSendText(View view){
+        if(connectedThread!=null){connectedThread.write("/txt/"+input_text.getText().toString()+"|");}
+    }
+
+
     public class myOnItemClickListener implements AdapterView.OnItemClickListener {
 
         @Override
@@ -148,6 +194,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), btArrayAdapter.getItem(position), Toast.LENGTH_SHORT).show();
 
             textStatus.setText("try...");
+            connect.setVisibility(View.VISIBLE);
+            control.setVisibility(View.INVISIBLE);
 
             final String name = btArrayAdapter.getItem(position); // get name
             final String address = deviceAddressArray.get(position); // get address
@@ -163,6 +211,8 @@ public class MainActivity extends AppCompatActivity {
                 flag = false;
                 textStatus.setText("connection failed!");
                 e.printStackTrace();
+                connect.setVisibility(View.VISIBLE);
+                control.setVisibility(View.INVISIBLE);
             }
 
             // start bluetooth communication
@@ -170,6 +220,8 @@ public class MainActivity extends AppCompatActivity {
                 textStatus.setText("connected to "+name);
                 connectedThread = new ConnectedThread(btSocket);
                 connectedThread.start();
+                connect.setVisibility(View.INVISIBLE);
+                control.setVisibility(View.VISIBLE);
             }
 
         }
