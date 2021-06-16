@@ -3,9 +3,7 @@
 String code, macro_code;
 int macro_status=0, macro_reload=1;
 
-void macro();
-void keyboard();
-void mouse();
+void macro(), keyboard(), mouse();
 
 void setup(){
   Serial.begin(9600);
@@ -22,6 +20,7 @@ void loop(){
     }else{
       code=Serial1.readStringUntil('|');// |까지의 시리얼 값을 받음
       code.trim();// 앞뒤 공백제거
+      Serial.println(code);
       command(code);// 명령 실행
     }
   }
@@ -41,7 +40,8 @@ void macro(){
   }
   for(int j=macro_reload;j!=0;j--){
     if(macro_status!=1){
-          break;
+      macro_reload=0;
+      break;
     }
     for(int i=0;i<max_macro;i++){
       if(Serial1.available()){
@@ -50,7 +50,8 @@ void macro(){
         command(code);// 명령 실행
       }
       if(macro_status!=1){
-          break;
+        macro_reload=0;
+        break;
       }
       if(i==0){
         command(macro_code.substring(0, macro_index[i]));
@@ -87,20 +88,18 @@ void command(String command){
     }else if(command.substring(1, 4).equals("pre")){// 키 누르기
       int slash_index = command.indexOf('/', 1);// / 위치
       int comma_index = command.indexOf(',', slash_index + 1);// 콤마 위치
-      char str1;
       String str = command.substring(comma_index + 1);
-      str.toCharArray(str1, str.length()+1);
       switch(command.substring(slash_index + 1, comma_index).toInt()){
         case 0:
-          Keyboard.release(str1);
+          Keyboard.release(str[0]);
           break;
         case 1:
-          Keyboard.press(str1);
+          Keyboard.press(str[0]);
           break;
         case 2:
         default:
-          Keyboard.press(str1);
-          Keyboard.release(str1);
+          Keyboard.press(str[0]);
+          Keyboard.release(str[0]);
           break;
       }
     }else if(command.substring(1, 7).equals("keyall")){// 모든 키 입력 해제
