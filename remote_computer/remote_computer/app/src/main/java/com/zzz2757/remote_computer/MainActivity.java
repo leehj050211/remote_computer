@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     String TAG = "MainActivity";
     UUID BT_MODULE_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifier
 
-    TextView textStatus, input_command, input_text;
+    TextView textStatus, input_command;
     Button btnParied, btnSearch, btnCommand_Send, btnText_Send, btnKey_shift, btnKey_ctrl, btnKey_leftalt, btnKey_gui;
     ListView listView;
     ConstraintLayout connect, control, keyboard, mouse;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     BluetoothSocket btSocket = null;
     ConnectedThread connectedThread;
 
-    boolean mode, key_shift, key_ctrl, key_leftalt, key_gui = false;
+    boolean key_shift, key_ctrl, key_leftalt, key_gui = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         btnCommand_Send = (Button) findViewById(R.id.btn_command_send);
         btnText_Send = (Button) findViewById(R.id.btn_text_send);
         input_command = (EditText) findViewById(R.id.input_command);
-        input_text = (EditText) findViewById(R.id.input_text);
         connect = (ConstraintLayout) findViewById(R.id.connect);
         connect.setVisibility(View.VISIBLE);
         control = (ConstraintLayout) findViewById(R.id.control);
@@ -173,6 +172,10 @@ public class MainActivity extends AppCompatActivity {
         Button btnMouse_leftdown = (Button)findViewById(R.id.btn_mouse_leftdown);
         Button btnMouse_down = (Button)findViewById(R.id.btn_mouse_down);
         Button btnMouse_rightdown = (Button)findViewById(R.id.btn_mouse_rightdown);
+        Button btnMouse_rightclick = (Button)findViewById(R.id.btn_mouse_rightclick);
+        Button btnMouse_leftclick = (Button)findViewById(R.id.btn_mouse_leftclick);
+        Button btnMouse_wheelup = (Button)findViewById(R.id.btn_mouse_wheelup);
+        Button btnMouse_wheeldown = (Button)findViewById(R.id.btn_mouse_wheeldown);
 
         btnKey_q.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -865,9 +868,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mm/-10,10|");
+                    connectedThread.write("/mm/-10,-10|");
                 }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    connectedThread.write("/mm/-10,10|");
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run(){
+                            connectedThread.write("/mm/-5,-5|");
+                        }
+                    },100);
                 }
                 return true;
             }
@@ -876,14 +884,180 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mm/-50,50|");
+                    connectedThread.write("/mm/0,-10|");
                 }else if (event.getAction() == MotionEvent.ACTION_MOVE){
                     new Handler().postDelayed(new Runnable() {
                         @Override
-                        public void run() {
-                            connectedThread.write("/mm/0,10|");
+                        public void run(){
+                            connectedThread.write("/mm/0,-5|");
                         }
-                    },1000);
+                    },100);
+                }
+                return true;
+            }
+        });
+        btnMouse_rightup.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    connectedThread.write("/mm/10,-10|");
+                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run(){
+                            connectedThread.write("/mm/5,-5|");
+                        }
+                    },100);
+                }
+                return true;
+            }
+        });
+        btnMouse_left.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    connectedThread.write("/mm/-10|");
+                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run(){
+                            connectedThread.write("/mm/-5|");
+                        }
+                    },100);
+                }
+                return true;
+            }
+        });
+        btnMouse_right.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    connectedThread.write("/mm/10|");
+                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run(){
+                            connectedThread.write("/mm/5|");
+                        }
+                    },100);
+                }
+                return true;
+            }
+        });
+        btnMouse_leftdown.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    connectedThread.write("/mm/-10,10|");
+                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run(){
+                            connectedThread.write("/mm/-5,5|");
+                        }
+                    },100);
+                }
+                return true;
+            }
+        });
+        btnMouse_down.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    connectedThread.write("/mm/0,10|");
+                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run(){
+                            connectedThread.write("/mm/0,5|");
+                        }
+                    },100);
+                }
+                return true;
+            }
+        });
+        btnMouse_rightdown.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    connectedThread.write("/mm/10,10|");
+                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run(){
+                            connectedThread.write("/mm/5,5|");
+                        }
+                    },100);
+                }
+                return true;
+            }
+        });
+        btnMouse_rightdown.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    connectedThread.write("/mm/10,10|");
+                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run(){
+                            connectedThread.write("/mm/5,5|");
+                        }
+                    },100);
+                }
+                return true;
+            }
+        });
+        btnMouse_leftclick.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    connectedThread.write("/ml/1|");
+                }else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    connectedThread.write("/ml/0|");
+                }
+                return true;
+            }
+        });
+        btnMouse_rightclick.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    connectedThread.write("/mr/1|");
+                }else if (event.getAction() == MotionEvent.ACTION_UP) {
+                    connectedThread.write("/mr/0|");
+                }
+                return true;
+            }
+        });
+        btnMouse_wheelup.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    connectedThread.write("/mw/1|");
+                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run(){
+                            connectedThread.write("/mw/2|");
+                        }
+                    },100);
+                }
+                return true;
+            }
+        });
+        btnMouse_wheeldown.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    connectedThread.write("/mw/-1|");
+                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run(){
+                            connectedThread.write("/mw/-2|");
+                        }
+                    },100);
                 }
                 return true;
             }
@@ -964,22 +1138,12 @@ public class MainActivity extends AppCompatActivity {
         unregisterReceiver(receiver);
     }
 
-    public void onClickButtonToggleMode(View view){
-        if (mode){
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // 세로회전
-            mode = false;
-        }else{
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // 가로회전
-            mode = true;
-
-        }
-    }
     // Send string
     public void onClickButtonSendCommand(View view){
         if(connectedThread!=null){connectedThread.write(input_command.getText().toString());}
     }
     public void onClickButtonSendText(View view){
-        if(connectedThread!=null){connectedThread.write("/txt/"+input_text.getText().toString()+"|");}
+        if(connectedThread!=null){connectedThread.write("/txt/"+input_command.getText().toString()+"|");}
     }
 
 
@@ -990,9 +1154,11 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), btArrayAdapter.getItem(position), Toast.LENGTH_SHORT).show();
 
             textStatus.setText("try...");
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // 세로회전
             connect.setVisibility(View.VISIBLE);
             control.setVisibility(View.INVISIBLE);
             keyboard.setVisibility(View.INVISIBLE);
+            mouse.setVisibility(View.INVISIBLE);
 
             final String name = btArrayAdapter.getItem(position); // get name
             final String address = deviceAddressArray.get(position); // get address
@@ -1008,6 +1174,7 @@ public class MainActivity extends AppCompatActivity {
                 flag = false;
                 textStatus.setText("connection failed!");
                 e.printStackTrace();
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT); // 세로회전
                 connect.setVisibility(View.VISIBLE);
                 control.setVisibility(View.INVISIBLE);
                 keyboard.setVisibility(View.INVISIBLE);
@@ -1019,6 +1186,7 @@ public class MainActivity extends AppCompatActivity {
                 textStatus.setText("connected to "+name);
                 connectedThread = new ConnectedThread(btSocket);
                 connectedThread.start();
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE); // 가로회전
                 connect.setVisibility(View.INVISIBLE);
                 control.setVisibility(View.VISIBLE);
                 keyboard.setVisibility(View.VISIBLE);

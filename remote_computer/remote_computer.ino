@@ -1,5 +1,6 @@
 #include <Keyboard.h>
 #include <Mouse.h>
+#include <HID.h>
 String code, macro_code;
 int macro_status=0, macro_reload=1;
 
