@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     UUID BT_MODULE_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"); // "random" unique identifier
 
     TextView textStatus, input_command;
-    Button btnParied, btnSearch, btnCommand_Send, btnText_Send, btnKey_shift, btnKey_ctrl, btnKey_leftalt, btnKey_gui;
+    Button btnParied, btnSearch, btnCommand_Send, btnText_Send,
+            btnKey_q, btnKey_w, btnKey_e, btnKey_r, btnKey_t, btnKey_y, btnKey_u, btnKey_i, btnKey_o, btnKey_p, btnKey_a, btnKey_s, btnKey_d, btnKey_f, btnKey_g, btnKey_h, btnKey_j, btnKey_k, btnKey_l, btnKey_z, btnKey_x, btnKey_c, btnKey_v, btnKey_b, btnKey_n, btnKey_m, btnKey_space, btnKey_ba, btnKey_1, btnKey_2, btnKey_3, btnKey_4, btnKey_5, btnKey_6, btnKey_7, btnKey_8, btnKey_9, btnKey_0, btnKey_minus, btnKey_equal, btnKey_backspace, btnKey_tab, btnKey_rightbracket, btnKey_leftbracket, btnKey_backslash, btnKey_cap, btnKey_semicolon, btnKey_apostrophe, btnKey_enter, btnKey_shift, btnKey_comma, btnKey_dot, btnKey_slash, btnKey_ctrl, btnKey_gui, btnKey_leftalt, btnKey_rightalt, btnKey_up, btnKey_down, btnKey_left, btnKey_right, btnMouse_leftup, btnMouse_up, btnMouse_rightup, btnMouse_left, btnMouse_right, btnMouse_leftdown, btnMouse_down, btnMouse_rightdown, btnMouse_leftclick, btnMouse_rightclick, btnMouse_wheelup, btnMouse_wheeldown;
     ListView listView;
     ConstraintLayout connect, control, keyboard, mouse;
 
@@ -53,8 +54,6 @@ public class MainActivity extends AppCompatActivity {
     private final static int REQUEST_ENABLE_BT = 1;
     BluetoothSocket btSocket = null;
     ConnectedThread connectedThread;
-
-    boolean key_shift, key_ctrl, key_leftalt, key_gui = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +94,79 @@ public class MainActivity extends AppCompatActivity {
         btnKey_ctrl = (Button) findViewById(R.id.btn_key_ctrl);
         btnKey_leftalt = (Button) findViewById(R.id.btn_key_leftalt);
         btnKey_gui = (Button) findViewById(R.id.btn_key_gui);
+        btnKey_q = (Button) findViewById(R.id.btn_key_q);
+        btnKey_w = (Button) findViewById(R.id.btn_key_w);
+        btnKey_e = (Button) findViewById(R.id.btn_key_e);
+        btnKey_r = (Button) findViewById(R.id.btn_key_r);
+        btnKey_t = (Button) findViewById(R.id.btn_key_t);
+        btnKey_y = (Button) findViewById(R.id.btn_key_y);
+        btnKey_u = (Button) findViewById(R.id.btn_key_u);
+        btnKey_i = (Button) findViewById(R.id.btn_key_i);
+        btnKey_o = (Button) findViewById(R.id.btn_key_o);
+        btnKey_p = (Button) findViewById(R.id.btn_key_p);
+        btnKey_a = (Button) findViewById(R.id.btn_key_a);
+        btnKey_s = (Button) findViewById(R.id.btn_key_s);
+        btnKey_d = (Button) findViewById(R.id.btn_key_d);
+        btnKey_f = (Button) findViewById(R.id.btn_key_f);
+        btnKey_g = (Button) findViewById(R.id.btn_key_g);
+        btnKey_h = (Button) findViewById(R.id.btn_key_h);
+        btnKey_j = (Button) findViewById(R.id.btn_key_j);
+        btnKey_k = (Button) findViewById(R.id.btn_key_k);
+        btnKey_l = (Button) findViewById(R.id.btn_key_l);
+        btnKey_z = (Button) findViewById(R.id.btn_key_z);
+        btnKey_x = (Button) findViewById(R.id.btn_key_x);
+        btnKey_c = (Button) findViewById(R.id.btn_key_c);
+        btnKey_v = (Button) findViewById(R.id.btn_key_v);
+        btnKey_b = (Button) findViewById(R.id.btn_key_b);
+        btnKey_n = (Button) findViewById(R.id.btn_key_n);
+        btnKey_m = (Button) findViewById(R.id.btn_key_m);
+        btnKey_space = (Button) findViewById(R.id.btn_key_space);
+        btnKey_ba = (Button) findViewById(R.id.btn_key_ba);
+        btnKey_1 = (Button) findViewById(R.id.btn_key_1);
+        btnKey_2 = (Button) findViewById(R.id.btn_key_2);
+        btnKey_3 = (Button) findViewById(R.id.btn_key_3);
+        btnKey_4 = (Button) findViewById(R.id.btn_key_4);
+        btnKey_5 = (Button) findViewById(R.id.btn_key_5);
+        btnKey_6 = (Button) findViewById(R.id.btn_key_6);
+        btnKey_7 = (Button) findViewById(R.id.btn_key_7);
+        btnKey_8 = (Button) findViewById(R.id.btn_key_8);
+        btnKey_9 = (Button) findViewById(R.id.btn_key_9);
+        btnKey_0 = (Button) findViewById(R.id.btn_key_0);
+        btnKey_minus = (Button) findViewById(R.id.btn_key_minus);
+        btnKey_equal = (Button) findViewById(R.id.btn_key_equal);
+        btnKey_backspace = (Button) findViewById(R.id.btn_key_backspace);
+        btnKey_tab = (Button) findViewById(R.id.btn_key_tab);
+        btnKey_rightbracket = (Button) findViewById(R.id.btn_key_rightbracket);
+        btnKey_leftbracket = (Button) findViewById(R.id.btn_key_leftbracket);
+        btnKey_backslash = (Button) findViewById(R.id.btn_key_backslash);
+        btnKey_cap = (Button) findViewById(R.id.btn_key_cap);
+        btnKey_semicolon = (Button) findViewById(R.id.btn_key_semicolon);
+        btnKey_apostrophe = (Button) findViewById(R.id.btn_key_apostrophe);
+        btnKey_enter = (Button) findViewById(R.id.btn_key_enter);
+        btnKey_shift = (Button) findViewById(R.id.btn_key_shift);
+        btnKey_comma = (Button) findViewById(R.id.btn_key_comma);
+        btnKey_dot = (Button) findViewById(R.id.btn_key_dot);
+        btnKey_slash = (Button) findViewById(R.id.btn_key_slash);
+        btnKey_ctrl = (Button) findViewById(R.id.btn_key_ctrl);
+        btnKey_gui = (Button) findViewById(R.id.btn_key_gui);
+        btnKey_leftalt = (Button) findViewById(R.id.btn_key_leftalt);
+        btnKey_rightalt = (Button) findViewById(R.id.btn_key_rightalt);
+        btnKey_up = (Button) findViewById(R.id.btn_key_up);
+        btnKey_down = (Button) findViewById(R.id.btn_key_down);
+        btnKey_left = (Button) findViewById(R.id.btn_key_left);
+        btnKey_right = (Button) findViewById(R.id.btn_key_right);
+        btnMouse_leftup = (Button) findViewById(R.id.btn_mouse_leftup);
+        btnMouse_up = (Button) findViewById(R.id.btn_mouse_up);
+        btnMouse_rightup = (Button) findViewById(R.id.btn_mouse_rightup);
+        btnMouse_left = (Button) findViewById(R.id.btn_mouse_left);
+        btnMouse_right = (Button) findViewById(R.id.btn_mouse_right);
+        btnMouse_leftdown = (Button) findViewById(R.id.btn_mouse_leftdown);
+        btnMouse_down = (Button) findViewById(R.id.btn_mouse_down);
+        btnMouse_rightdown = (Button) findViewById(R.id.btn_mouse_rightdown);
+        btnMouse_rightclick = (Button) findViewById(R.id.btn_mouse_rightclick);
+        btnMouse_leftclick = (Button) findViewById(R.id.btn_mouse_leftclick);
+        btnMouse_wheelup = (Button) findViewById(R.id.btn_mouse_wheelup);
+        btnMouse_wheeldown = (Button) findViewById(R.id.btn_mouse_wheeldown);
 
         // Show paired devices
         btArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
@@ -103,963 +175,1208 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(new myOnItemClickListener());
 
-        Button btnKey_q = (Button)findViewById(R.id.btn_key_q);
-        Button btnKey_w = (Button)findViewById(R.id.btn_key_w);
-        Button btnKey_e = (Button)findViewById(R.id.btn_key_e);
-        Button btnKey_r = (Button)findViewById(R.id.btn_key_r);
-        Button btnKey_t = (Button)findViewById(R.id.btn_key_t);
-        Button btnKey_y = (Button)findViewById(R.id.btn_key_y);
-        Button btnKey_u = (Button)findViewById(R.id.btn_key_u);
-        Button btnKey_i = (Button)findViewById(R.id.btn_key_i);
-        Button btnKey_o = (Button)findViewById(R.id.btn_key_o);
-        Button btnKey_p = (Button)findViewById(R.id.btn_key_p);
-        Button btnKey_a = (Button)findViewById(R.id.btn_key_a);
-        Button btnKey_s = (Button)findViewById(R.id.btn_key_s);
-        Button btnKey_d = (Button)findViewById(R.id.btn_key_d);
-        Button btnKey_f = (Button)findViewById(R.id.btn_key_f);
-        Button btnKey_g = (Button)findViewById(R.id.btn_key_g);
-        Button btnKey_h = (Button)findViewById(R.id.btn_key_h);
-        Button btnKey_j = (Button)findViewById(R.id.btn_key_j);
-        Button btnKey_k = (Button)findViewById(R.id.btn_key_k);
-        Button btnKey_l = (Button)findViewById(R.id.btn_key_l);
-        Button btnKey_z = (Button)findViewById(R.id.btn_key_z);
-        Button btnKey_x = (Button)findViewById(R.id.btn_key_x);
-        Button btnKey_c = (Button)findViewById(R.id.btn_key_c);
-        Button btnKey_v = (Button)findViewById(R.id.btn_key_v);
-        Button btnKey_b = (Button)findViewById(R.id.btn_key_b);
-        Button btnKey_n = (Button)findViewById(R.id.btn_key_n);
-        Button btnKey_m = (Button)findViewById(R.id.btn_key_m);
-        Button btnKey_space = (Button)findViewById(R.id.btn_key_space);
-        Button btnKey_ba = (Button)findViewById(R.id.btn_key_ba);
-        Button btnKey_1 = (Button)findViewById(R.id.btn_key_1);
-        Button btnKey_2 = (Button)findViewById(R.id.btn_key_2);
-        Button btnKey_3 = (Button)findViewById(R.id.btn_key_3);
-        Button btnKey_4 = (Button)findViewById(R.id.btn_key_4);
-        Button btnKey_5 = (Button)findViewById(R.id.btn_key_5);
-        Button btnKey_6 = (Button)findViewById(R.id.btn_key_6);
-        Button btnKey_7 = (Button)findViewById(R.id.btn_key_7);
-        Button btnKey_8 = (Button)findViewById(R.id.btn_key_8);
-        Button btnKey_9 = (Button)findViewById(R.id.btn_key_9);
-        Button btnKey_0 = (Button)findViewById(R.id.btn_key_0);
-        Button btnKey_minus = (Button)findViewById(R.id.btn_key_minus);
-        Button btnKey_equal = (Button)findViewById(R.id.btn_key_equal);
-        Button btnKey_backspace = (Button)findViewById(R.id.btn_key_backspace);
-        Button btnKey_tab = (Button)findViewById(R.id.btn_key_tab);
-        Button btnKey_rightbracket = (Button)findViewById(R.id.btn_key_rightbracket);
-        Button btnKey_leftbracket = (Button)findViewById(R.id.btn_key_leftbracket);
-        Button btnKey_backslash = (Button)findViewById(R.id.btn_key_backslash);
-        Button btnKey_cap = (Button)findViewById(R.id.btn_key_cap);
-        Button btnKey_semicolon = (Button)findViewById(R.id.btn_key_semicolon);
-        Button btnKey_apostrophe = (Button)findViewById(R.id.btn_key_apostrophe);
-        Button btnKey_enter = (Button)findViewById(R.id.btn_key_enter);
-        Button btnKey_shift = (Button)findViewById(R.id.btn_key_shift);
-        Button btnKey_comma = (Button)findViewById(R.id.btn_key_comma);
-        Button btnKey_dot = (Button)findViewById(R.id.btn_key_dot);
-        Button btnKey_slash = (Button)findViewById(R.id.btn_key_slash);
-        Button btnKey_ctrl = (Button)findViewById(R.id.btn_key_ctrl);
-        Button btnKey_gui = (Button)findViewById(R.id.btn_key_gui);
-        Button btnKey_leftalt = (Button)findViewById(R.id.btn_key_leftalt);
-        Button btnKey_rightalt = (Button)findViewById(R.id.btn_key_rightalt);
-        Button btnKey_up = (Button)findViewById(R.id.btn_key_up);
-        Button btnKey_down = (Button)findViewById(R.id.btn_key_down);
-        Button btnKey_left = (Button)findViewById(R.id.btn_key_left);
-        Button btnKey_right = (Button)findViewById(R.id.btn_key_right);
-        Button btnMouse_leftup = (Button)findViewById(R.id.btn_mouse_leftup);
-        Button btnMouse_up = (Button)findViewById(R.id.btn_mouse_up);
-        Button btnMouse_rightup = (Button)findViewById(R.id.btn_mouse_rightup);
-        Button btnMouse_left = (Button)findViewById(R.id.btn_mouse_left);
-        Button btnMouse_right = (Button)findViewById(R.id.btn_mouse_right);
-        Button btnMouse_leftdown = (Button)findViewById(R.id.btn_mouse_leftdown);
-        Button btnMouse_down = (Button)findViewById(R.id.btn_mouse_down);
-        Button btnMouse_rightdown = (Button)findViewById(R.id.btn_mouse_rightdown);
-        Button btnMouse_rightclick = (Button)findViewById(R.id.btn_mouse_rightclick);
-        Button btnMouse_leftclick = (Button)findViewById(R.id.btn_mouse_leftclick);
-        Button btnMouse_wheelup = (Button)findViewById(R.id.btn_mouse_wheelup);
-        Button btnMouse_wheeldown = (Button)findViewById(R.id.btn_mouse_wheeldown);
-
         btnKey_q.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,113|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,113|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,113|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,113|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_w.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,119|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,119|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,119|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,119|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_e.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,101|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,101|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,101|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,101|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_r.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,114|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,114|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,114|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,114|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_t.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,116|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,116|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,116|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,116|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_y.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,121|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,121|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,121|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,121|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_u.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,117|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,117|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,117|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,117|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_i.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,105|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,105|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,105|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,105|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_o.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,111|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,111|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,111|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,111|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_p.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,112|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,112|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,112|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,112|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_a.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,97|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,97|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,97|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,97|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_s.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,115|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,115|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,115|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,115|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_d.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,100|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,100|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,100|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,100|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_f.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,102|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,102|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,102|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,102|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_g.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,103|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,103|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,103|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,103|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_h.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,104|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,104|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,104|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,104|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_j.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,106|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,106|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,106|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,106|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_k.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,107|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,107|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,107|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,107|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_l.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,108|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,108|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,108|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,108|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_z.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,122|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,122|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,122|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,122|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_x.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,120|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,120|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,120|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,120|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_c.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,99|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,99|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,99|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,99|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_v.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,118|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,118|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,118|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,118|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_b.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,98|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,98|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,98|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,98|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_n.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,110|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,110|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,110|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,110|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_m.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,109|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,109|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,109|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,109|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_space.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,32|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,32|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,32|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,32|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_ba.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,96|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,96|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,96|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,96|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,49|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,49|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,49|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,49|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_2.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,50|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,50|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,50|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,50|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_3.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,51|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,51|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,51|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,51|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_4.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,52|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,52|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,52|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,52|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_5.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,53|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,53|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,53|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,53|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_6.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,54|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,54|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,54|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,54|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_7.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,55|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,55|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,55|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,55|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_8.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,56|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,56|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,56|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,56|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_9.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,57|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,57|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,57|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,57|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_0.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,48|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,48|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,48|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,48|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_minus.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,45|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,45|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,45|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,45|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_equal.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,61|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,61|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,61|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,61|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_backspace.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,8|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,8|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,8|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,8|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_tab.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,9|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    // 버튼에서 손을 떼었을 때
-                    connectedThread.write("/key/0,9|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,9|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,9|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_rightbracket.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,93|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,93|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,93|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,93|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_leftbracket.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,91|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,91|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,91|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,91|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_backslash.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,92|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,92|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,92|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,92|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_cap.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,193|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,193|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,193|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,193|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_semicolon.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,59|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,59|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,59|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,59|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_apostrophe.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,39|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,39|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,39|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,39|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_enter.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,10|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,10|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,10|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,10|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_shift.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,129|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,129|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,129|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,129|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_comma.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,44|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,44|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,44|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,44|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_dot.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,46|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,46|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,46|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,46|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_slash.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,47|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,47|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,47|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,47|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_ctrl.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,128|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,128|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,128|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,128|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_gui.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,131|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,131|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,131|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,131|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_leftalt.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,130|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,130|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,130|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,130|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_rightalt.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,134|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,134|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,134|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,134|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_up.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,218|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,218|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,218|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,218|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_down.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,217|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,217|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,217|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,217|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_left.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,216|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,216|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,216|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,216|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnKey_right.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/key/1,215|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/key/0,215|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/key/1,215|");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        connectedThread.write("/key/0,215|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnMouse_leftup.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mm/-10,-10|");
-                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run(){
-                            connectedThread.write("/mm/-5,-5|");
-                        }
-                    },100);
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/mm/-10,-10|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/mm/-5,-5|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnMouse_up.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mm/0,-10|");
-                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run(){
-                            connectedThread.write("/mm/0,-5|");
-                        }
-                    },100);
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/mm/0,-10|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/mm/0,-5|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnMouse_rightup.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mm/10,-10|");
-                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run(){
-                            connectedThread.write("/mm/5,-5|");
-                        }
-                    },100);
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/mm/10,-10|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/mm/5,-5|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnMouse_left.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mm/-10|");
-                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run(){
-                            connectedThread.write("/mm/-5|");
-                        }
-                    },100);
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/mm/-10|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/mm/-5|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnMouse_right.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mm/10|");
-                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run(){
-                            connectedThread.write("/mm/5|");
-                        }
-                    },100);
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/mm/10|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/mm/5|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnMouse_leftdown.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mm/-10,10|");
-                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run(){
-                            connectedThread.write("/mm/-5,5|");
-                        }
-                    },100);
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/mm/-10,10|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/mm/-5,5|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnMouse_down.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mm/0,10|");
-                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run(){
-                            connectedThread.write("/mm/0,5|");
-                        }
-                    },100);
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/mm/0,10|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/mm/0,5|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnMouse_rightdown.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mm/10,10|");
-                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run(){
-                            connectedThread.write("/mm/5,5|");
-                        }
-                    },100);
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/mm/10,10|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/mm/5,5|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
-            }
-        });
-        btnMouse_rightdown.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mm/10,10|");
-                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run(){
-                            connectedThread.write("/mm/5,5|");
-                        }
-                    },100);
-                }
-                return true;
+                return false;
             }
         });
         btnMouse_leftclick.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/ml/1|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/ml/0|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/ml/1|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/ml/0|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnMouse_rightclick.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mr/1|");
-                }else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    connectedThread.write("/mr/0|");
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/mr/1|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/mr/0|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnMouse_wheelup.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mw/1|");
-                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run(){
-                            connectedThread.write("/mw/2|");
-                        }
-                    },100);
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/mw/1|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/mw/2|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
+                return false;
             }
         });
         btnMouse_wheeldown.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    connectedThread.write("/mw/-1|");
-                }else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run(){
-                            connectedThread.write("/mw/-2|");
-                        }
-                    },100);
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        connectedThread.write("/mw/-1|");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run(){
+                                connectedThread.write("/mw/-2|");
+                            }
+                        },100);
+                        break;
                 }
-                return true;
+                return false;
             }
         });
     }
@@ -1067,16 +1384,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-
         if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             Toast.makeText(this, "세로모드", Toast.LENGTH_SHORT).show();
         }
-
         if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Toast.makeText(this, "가로모드", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     public void onClickButtonPaired(View view){
@@ -1133,7 +1446,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         // Don't forget to unregister the ACTION_FOUND receiver.
         unregisterReceiver(receiver);
     }
@@ -1145,7 +1457,6 @@ public class MainActivity extends AppCompatActivity {
     public void onClickButtonSendText(View view){
         if(connectedThread!=null){connectedThread.write("/txt/"+input_command.getText().toString()+"|");}
     }
-
 
     public class myOnItemClickListener implements AdapterView.OnItemClickListener {
 
@@ -1180,7 +1491,6 @@ public class MainActivity extends AppCompatActivity {
                 keyboard.setVisibility(View.INVISIBLE);
                 mouse.setVisibility(View.INVISIBLE);
             }
-
             // start bluetooth communication
             if(flag){
                 textStatus.setText("connected to "+name);
@@ -1192,7 +1502,6 @@ public class MainActivity extends AppCompatActivity {
                 keyboard.setVisibility(View.VISIBLE);
                 mouse.setVisibility(View.VISIBLE);
             }
-
         }
     }
 

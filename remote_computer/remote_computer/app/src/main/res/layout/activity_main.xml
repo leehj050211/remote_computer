@@ -58,7 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@id/text_status">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/input"
@@ -90,20 +90,20 @@
                         <Button
                             android:id="@+id/btn_mouse_leftup"
                             android:layout_height="match_parent"
-                            android:insetLeft="2dp"
-                            android:insetTop="2dp"
-                            android:insetRight="2dp"
-                            android:insetBottom="2dp"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
                             android:text="↖"
                             android:textSize="20sp" />
 
                         <Button
                             android:id="@+id/btn_mouse_up"
                             android:layout_height="match_parent"
-                            android:insetLeft="2dp"
-                            android:insetTop="2dp"
-                            android:insetRight="2dp"
-                            android:insetBottom="2dp"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
                             android:text="↑"
                             android:textAllCaps="false"
                             android:textSize="20sp" />
@@ -111,10 +111,10 @@
                         <Button
                             android:id="@+id/btn_mouse_rightup"
                             android:layout_height="match_parent"
-                            android:insetLeft="2dp"
-                            android:insetTop="2dp"
-                            android:insetRight="2dp"
-                            android:insetBottom="2dp"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
                             android:text="↗"
                             android:textAllCaps="false"
                             android:textSize="20sp" />
@@ -128,28 +128,29 @@
                         <Button
                             android:id="@+id/btn_mouse_left"
                             android:layout_height="match_parent"
-                            android:insetLeft="2dp"
-                            android:insetTop="2dp"
-                            android:insetRight="2dp"
-                            android:insetBottom="2dp"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
                             android:text="←"
                             android:textSize="20sp" />
 
                         <Button
                             android:layout_height="match_parent"
-                            android:insetLeft="2dp"
-                            android:insetTop="2dp"
-                            android:insetRight="2dp"
-                            android:insetBottom="2dp"
-                            android:textSize="20sp" />
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
 
                         <Button
                             android:id="@+id/btn_mouse_right"
                             android:layout_height="match_parent"
-                            android:insetLeft="2dp"
-                            android:insetTop="2dp"
-                            android:insetRight="2dp"
-                            android:insetBottom="2dp"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
                             android:text="→"
                             android:textSize="20sp" />
 
@@ -162,20 +163,20 @@
                         <Button
                             android:id="@+id/btn_mouse_leftdown"
                             android:layout_height="match_parent"
-                            android:insetLeft="2dp"
-                            android:insetTop="2dp"
-                            android:insetRight="2dp"
-                            android:insetBottom="2dp"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
                             android:text="↙"
                             android:textSize="20sp" />
 
                         <Button
                             android:id="@+id/btn_mouse_down"
                             android:layout_height="match_parent"
-                            android:insetLeft="2dp"
-                            android:insetTop="2dp"
-                            android:insetRight="2dp"
-                            android:insetBottom="2dp"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
                             android:text="↓"
                             android:textAllCaps="false"
                             android:textSize="20sp" />
@@ -183,10 +184,10 @@
                         <Button
                             android:id="@+id/btn_mouse_rightdown"
                             android:layout_height="match_parent"
-                            android:insetLeft="2dp"
-                            android:insetTop="2dp"
-                            android:insetRight="2dp"
-                            android:insetBottom="2dp"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
                             android:text="↘"
                             android:textAllCaps="false"
                             android:textSize="20sp" />
@@ -199,6 +200,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp">
 
@@ -515,7 +517,7 @@
                     android:insetBottom="2dp"
                     android:text="back\nspace"
                     android:textAllCaps="false"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -528,7 +530,7 @@
                     android:id="@+id/btn_key_tab"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.25"
                     android:insetLeft="2dp"
                     android:insetTop="2dp"
                     android:insetRight="2dp"
@@ -724,7 +726,7 @@
                     android:insetBottom="2dp"
                     android:text="caps\nlock"
                     android:textAllCaps="false"
-                    android:textSize="14sp" />
+                    android:textSize="13sp" />
 
                 <Button
                     android:id="@+id/btn_key_a"
@@ -900,7 +902,7 @@
                     android:insetBottom="2dp"
                     android:text="shift"
                     android:textAllCaps="false"
-                    android:textSize="20sp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/btn_key_z"
@@ -1063,7 +1065,7 @@
                     android:insetBottom="2dp"
                     android:text="ctrl"
                     android:textAllCaps="false"
-                    android:textSize="20sp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/btn_key_gui"
@@ -1076,7 +1078,7 @@
                     android:insetBottom="2dp"
                     android:text="win"
                     android:textAllCaps="false"
-                    android:textSize="20sp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/btn_key_leftalt"
@@ -1089,7 +1091,7 @@
                     android:insetBottom="2dp"
                     android:text="alt"
                     android:textAllCaps="false"
-                    android:textSize="20sp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/btn_key_space"
@@ -1100,9 +1102,8 @@
                     android:insetTop="2dp"
                     android:insetRight="2dp"
                     android:insetBottom="2dp"
-                    android:text=""
                     android:textAllCaps="false"
-                    android:textSize="20sp" />
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/btn_key_rightalt"
